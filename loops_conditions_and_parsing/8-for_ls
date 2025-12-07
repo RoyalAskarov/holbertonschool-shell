@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# This script lists files, showing only the part after the first dash.
+
+# Loop over all non-hidden files in the current directory
+for file in *; do
+    
+    # Check if the file name contains a dash
+    if echo "$file" | grep -q "-"; then
+        # Use cut to extract the part after the first dash
+        # -d '-' specifies the dash as the delimiter
+        # -f 2- specifies field 2 through the end of the line
+        echo "$file" | cut -d '-' -f 2-
+    else
+        # If no dash is found, print the entire filename (as per the example)
+        echo "$file"
+    fi
+
+done
