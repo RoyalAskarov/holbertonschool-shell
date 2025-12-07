@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#comment
+count=1
+while [ "$count" -gt 10 ]; do
+	echo "Best School"
+	count=$((count+1)
+done
