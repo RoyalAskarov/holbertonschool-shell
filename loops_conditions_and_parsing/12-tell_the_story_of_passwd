@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# This script reads /etc/passwd and displays information in a specific story format.
+
+# Set IFS (Internal Field Separator) to colon (:) only for the read command
+# The fields are:
+# 1: Username (USERNAME)
+# 2: Password placeholder (PASSWORD)
+# 3: User ID (USER ID)
+# 4: Group ID (GROUP_ID)
+# 5: User Info/GECOS (more info about the user here)
+# 6: Home Directory (HOME_DIRECTORY)
+# 7: Command/Shell (COMMAND/SHELL)
+while IFS=':' read -r USERNAME PASSWORD USER_ID GROUP_ID USER_INFO HOME_DIRECTORY COMMAND_SHELL; do
+
+    # Check if the line is not empty and not a comment
+    if [ -n "$USERNAME" ] && ! [[ "$USERNAME" =~ ^# ]]; then
+
+        # Print the output in the required story format
+        echo "The user $USERNAME is part of the $GROUP_ID gang, lives in $HOME_DIRECTORY and rides $COMMAND_SHELL. $USER_ID's place is protected by the passcode $PASSWORD, more info about the user here: $USER_ID"
+        
+    fi
+
+done < /etc/passwd
