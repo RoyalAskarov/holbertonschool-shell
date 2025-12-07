@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#sadfa
+count=0
+while [ "$count" -le 12 ]; do
+	echo "hour $count"
+	count2=1
+	while [ "$count2" -le 59 ]; do
+		echo "$count2"
+		count2=$((count2 + 1))
+	done   
+	count=$((count + 1));
+done
