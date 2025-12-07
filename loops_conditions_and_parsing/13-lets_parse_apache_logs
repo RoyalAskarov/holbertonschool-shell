@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# This script parses an Apache access log file to display only the IP address and HTTP status code using awk.
+
+# The Apache log file will be provided to the script (e.g., via cat, a pipe, or direct file access in awk).
+# Assuming the access log data is either piped into the script or supplied as an argument.
+# Based on the example provided in the task description:
+# IP address is the first field ($1)
+# HTTP status code is the ninth field ($9)
+
+awk '{print $1, $9}' apache-access.log
