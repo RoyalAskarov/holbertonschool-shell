@@ -2,7 +2,7 @@
 #sadfa
 count=0
 while [ "$count" -le 12 ]; do
-	echo "hour $count"
+	echo "Hour: $count"
 	count2=1
 	while [ "$count2" -le 59 ]; do
 		echo "$count2"
