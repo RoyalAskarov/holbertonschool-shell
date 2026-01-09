@@ -1,18 +1,5 @@
 #!/usr/bin/env bash
-# Parses an Apache log file and displays number of occurrences per IP and HTTP status code
+# Displays number of occurrences per IP and HTTP status code from an Apache log
 
-awk '
-{
-    ip = $1
-    status = $9
-    if (status ~ /^[0-9]+$/)
-        count[ip, status]++
-}
-END {
-    for (key in count) {
-        split(key, parts, SUBSEP)
-        print count[key], parts[1], parts[2]
-    }
-}
-' | sort -nr
+awk '{print $1, $9}' | sort | uniq -c | sort -nr
 
