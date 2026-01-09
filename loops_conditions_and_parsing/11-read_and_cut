@@ -1,17 +1,7 @@
 #!/usr/bin/env bash
-# This script reads /etc/passwd and displays username, user ID, and home directory path.
+# This script displays the username, user ID, and home directory from /etc/passwd
 
-# Set IFS (Internal Field Separator) to colon (:) only for the read command
-# The backslash is necessary to preserve the colon when IFS is set.
-while IFS=':' read -r username password user_id group_id user_info home_dir shell; do
-    
-    # Check if the line starts with a comment or is empty (optional but good practice)
-    # The -n check ensures we don't process blank lines from the file
-    if [ -n "$username" ] && ! [[ "$username" =~ ^# ]]; then
-        
-        # Display the required fields: username, user ID, and Home directory
-        echo "$username:$user_id:$home_dir"
-        
-    fi
-
+while IFS=":" read -r user password uid gid info home shell
+do
+    echo "The user $user has an ID of $uid and a home directory of $home"
 done < /etc/passwd
