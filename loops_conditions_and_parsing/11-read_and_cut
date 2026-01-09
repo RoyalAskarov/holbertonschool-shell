@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This script displays the username, user ID, and home directory from /etc/passwd
+# Reads /etc/passwd and displays specific user details
 
 while IFS=":" read -r user password uid gid info home shell
 do
