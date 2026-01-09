@@ -1,17 +1,13 @@
-#!/bin/bash
-# This script checks the existence and properties of a file named 'school'
+#!/usr/bin/env bash
+# This script checks if the file 'school' exists and identifies its properties
 
 if [ -e "school" ]; then
     echo "school file exists"
-    
-    # Check if the file is empty or not
     if [ -s "school" ]; then
         echo "school file is not empty"
     else
         echo "school file is empty"
     fi
-
-    # Check if it is a regular file
     if [ -f "school" ]; then
         echo "school is a regular file"
     fi
