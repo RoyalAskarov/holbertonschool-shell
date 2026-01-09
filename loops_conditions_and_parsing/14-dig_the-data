@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # Displays number of occurrences per IP and HTTP status code from an Apache log
 
-awk '{print $1, $9}' | sort | uniq -c | sort -nr
+awk '$9 ~ /^[0-9]+$/ { print $1, $9 }' | sort | uniq -c | sort -nr
 
