@@ -1,15 +1,18 @@
 #!/bin/bash
-if [ -e "school" ]
-then
+# This script checks the existence and properties of a file named 'school'
+
+if [ -e "school" ]; then
     echo "school file exists"
-    if [ -s "school" ]
-    then
+    
+    # Check if the file is empty or not
+    if [ -s "school" ]; then
         echo "school file is not empty"
     else
         echo "school file is empty"
     fi
-    if [ -f "school" ]
-    then
+
+    # Check if it is a regular file
+    if [ -f "school" ]; then
         echo "school is a regular file"
     fi
 else
