@@ -1,29 +1,17 @@
-#!/usr/bin/env bash
-# This script gives information about the file named 'school' using nested if/else.
-
-FILE="school"
-
-# 1. Check Existence
-if [ -e "$FILE" ]; then
+#!/bin/bash
+if [ -e "school" ]
+then
     echo "school file exists"
-    
-    # 2. Checks if the file is NOT a directory (-f is for regular files)
-    if [ -f "$FILE" ]; then
-        echo "school is a regular file"
-        
-        # 3. Check for Empty/Not Empty (Only for regular files)
-        if [ -s "$FILE" ]; then
-            echo "school file is not empty"
-        else
-            echo "school file is empty"
-        fi
-        
-    # If it is NOT a regular file (e.g., a directory, symlink, etc.)
+    if [ -s "school" ]
+    then
+        echo "school file is not empty"
     else
-        echo "school is not a regular file:(nothing)"
+        echo "school file is empty"
     fi
-
-# 1. If the file does NOT exist
+    if [ -f "school" ]
+    then
+        echo "school is a regular file"
+    fi
 else
     echo "school file does not exist"
 fi
