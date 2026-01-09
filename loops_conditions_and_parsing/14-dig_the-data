@@ -1,9 +1,18 @@
 #!/usr/bin/env bash
-# Dig the data
+# Parses an Apache log file and displays number of occurrences per IP and HTTP status code
 
-awk '{ print $1, $9 }' apache-access.log \
-| sort \
-| uniq -c \
-| sort -k1,1nr -k2,2 -k3,3 \
-| awk '{ print $1, $2, $3 }'
+awk '
+{
+    ip = $1
+    status = $9
+    if (status ~ /^[0-9]+$/)
+        count[ip, status]++
+}
+END {
+    for (key in count) {
+        split(key, parts, SUBSEP)
+        print count[key], parts[1], parts[2]
+    }
+}
+' | sort -nr
 
