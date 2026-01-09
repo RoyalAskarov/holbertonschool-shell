@@ -1,5 +1,3 @@
 #!/usr/bin/env bash
-# Displays number of occurrences per IP and HTTP status code from an Apache log
-
-awk '$9 ~ /^[0-9]+$/ { print $1, $9 }' | sort | uniq -c | sort -nr
-
+# this is a Bash script that groups visitors by IP and HTTP status code, and displays this data.
+awk '{print $1, $9}' apache-access.log | sort | uniq -c | sort -nr
