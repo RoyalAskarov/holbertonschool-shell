@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Dig the data
 
 awk '
 {
