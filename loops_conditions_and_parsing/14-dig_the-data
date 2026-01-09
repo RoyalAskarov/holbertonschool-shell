@@ -1,14 +1,9 @@
 #!/usr/bin/env bash
 # Dig the data
 
-awk '
-{
-    key = $1 " " $9
-    count[key]++
-}
-END {
-    for (k in count)
-        print count[k], k
-}
-' | sort -nr
+awk '{ print $1, $9 }' \
+| sort \
+| uniq -c \
+| sort -nr \
+| awk '{ print $1, $2, $3 }'
 
